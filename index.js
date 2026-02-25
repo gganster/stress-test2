@@ -38,6 +38,12 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (req.method === "GET" && req.url === "/") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("hello world from b");
+    return;
+  }
+
   if (req.method === "GET" && req.url.split("?")[0] === "/pi") {
     const url = new URL(req.url, `http://${req.headers.host}`);
     const iterations = Math.min(parseInt(url.searchParams.get("iterations") || "10000000", 10), 500000000);
