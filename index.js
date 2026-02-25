@@ -38,6 +38,12 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (req.method === "GET" && req.url === "/pid") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ pid: process.pid }));
+    return;
+  }
+
   if (req.method === "GET" && req.url === "/") {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("hello world from b");
