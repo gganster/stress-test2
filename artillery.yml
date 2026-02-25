@@ -1,0 +1,21 @@
+config:
+  target: "https://stresstest2-PLACEHOLDER.francecentral-01.azurewebsites.net"
+  phases:
+    - duration: 10
+      arrivalRate: 5
+      name: "Warm up"
+    - duration: 15
+      arrivalRate: 20
+      name: "Charge moyenne"
+    - duration: 15
+      arrivalRate: 50
+      name: "Charge forte"
+    - duration: 60
+      arrivalRate: 100
+      name: "Pic de charge"
+
+scenarios:
+  - name: "Calcul Pi"
+    flow:
+      - get:
+          url: "/pi?iterations=10000000"
